@@ -1,0 +1,53 @@
+// Part 1
+// Rename file in models and routes folders to patients.js ✅
+// Add second file to models and routes folders
+// Create two tables in elephantsql.com in SQL: ✅
+    // Table 1 called Patients: first_name, last_name, age, gender (add email and phone in) ✅
+    // Table 2 called Ailments: healthy?(TrueFalse), ailments, medicine, ✅
+// Build out one route to GET all Patients ✅
+// build out one model to get all Patients ✅
+// Test to see if the route and model are working (via Postman) ✅
+
+// Part 2
+// Build out each of the other routes. For example: 
+    // getPatientByID ✅
+    // createPatient ✅
+    // updatePatientByID ✅
+    // deletePatientByID ✅
+// Build out each of the other models in order For example: 
+    // getPatientByID ✅
+    // createPatient ✅
+    // updatePatientByID ✅
+    // deletePatientByID ✅
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+    CREATE TABLE patients (
+	id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  first_name TEXT,
+  last_name TEXT,
+  age INT,
+  sex VARCHAR(1)
+);
+
+INSERT INTO patients
+	(first_name, last_name, age, sex)
+VALUES
+	('Jake', 'Sugar', 20, 'M'),
+	('Sam', 'Lord', 40, 'F'),
+	('Gary', 'Greg', 70,'M');
+    
+CREATE TABLE  ailments_medication (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  patients_id INTEGER REFERENCES patients(id),
+  healthy_weight TEXT,
+  ailments TEXT,
+  medication TEXT
+);
+
+INSERT INTO ailments_medication
+	(patients_id, healthy_weight, ailments, medication)
+VALUES
+	(1,'TRUE', 'low immunity','paracetamol'),
+	(2, 'False', 'covid-19','calpol'),
+	(3, 'False', 'glandular fever', 'ibuprofen');
